@@ -27,10 +27,11 @@ jobs:
           npm run build --if-present
           npm run test --if-present
 
+      - name: List backend contents (debug)
+        run: ls -la backend
+
       - name: Zip contents of backend folder
-        run: |
-          cd backend
-          zip -r ../backend.zip .
+        run: zip -r backend.zip backend
 
       - name: Upload artifact for deploy step
         uses: actions/upload-artifact@v4
@@ -60,5 +61,5 @@ jobs:
         with:
           app-name: 'mahaparfum'
           slot-name: 'Production'
-          package: .
+          package: ./backend
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_6C3523CAABF74F3A898093D73F16552D }}

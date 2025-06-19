@@ -28,9 +28,8 @@ jobs:
 
       - name: Copy backend files to staging dir
         run: |
-           mkdir backend-deploy
-           cp -r ./backend/* ./backend-deploy/
-
+          mkdir backend-deploy
+          cp -r backend/* backend-deploy
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
